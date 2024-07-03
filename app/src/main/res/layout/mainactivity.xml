@@ -23,6 +23,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Splash Screen Fragment" />
+    <Button
+        android:id="@+id/dashboardButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dashobard activity" />
 
     <FrameLayout
         android:id="@+id/fragment_container"

@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">PasiekaApp</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+        <string name="panel">Panel</string>
+        <string name="pasieki">Pasieki</string>
+        <string name="zadania">Zadania</string>
+        <string name="wiecej">Więcej</string>
+
 </resources>

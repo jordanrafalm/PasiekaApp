@@ -1,5 +1,6 @@
 package com.example.pasiekaapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val loginButton: Button = findViewById(R.id.loginButton)
         val registerButton: Button = findViewById(R.id.registerButton)
         val splashButton: Button = findViewById(R.id.splashButton)
-
+        val dashboardButton: Button = findViewById(R.id.dashboardButton)
         loginButton.setOnClickListener {
             openFragment(LoginFragment())
         }
@@ -28,6 +29,10 @@ class MainActivity : AppCompatActivity() {
 
         splashButton.setOnClickListener {
             openFragment(SplashScreenFragment())
+        }
+        dashboardButton.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
         }
     }
 

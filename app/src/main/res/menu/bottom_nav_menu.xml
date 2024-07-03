@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_panel"
+        android:icon="@drawable/panel"
+        android:title="@string/panel" />
+    <item
+        android:id="@+id/navigation_pasieki"
+        android:icon="@drawable/bee_4459984"
+        android:title="@string/pasieki" />
+    <item
+        android:id="@+id/navigation_zadania"
+        android:icon="@drawable/option"
+        android:title="@string/zadania" />
+    <item
+        android:id="@+id/navigation_wiecej"
+        android:icon="@drawable/options"
+        android:title="@string/wiecej" />
+</menu>
