@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         val registerButton: Button = findViewById(R.id.registerButton)
         val splashButton: Button = findViewById(R.id.splashButton)
         val dashboardButton: Button = findViewById(R.id.dashboardButton)
+        val TasksButton: Button = findViewById(R.id.taskButton)
         loginButton.setOnClickListener {
             openFragment(LoginFragment())
         }
@@ -29,6 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         splashButton.setOnClickListener {
             openFragment(SplashScreenFragment())
+        }
+        TasksButton.setOnClickListener {
+            openFragment(TasksFragment())
         }
         dashboardButton.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)

@@ -2,30 +2,22 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/dashboard_not_logged_nav_graph"
-    app:startDestination="@id/navigation_panel">
+    app:startDestination="@id/panelFragment">
 
     <fragment
-        android:id="@+id/navigation_panel"
-        android:name="com.example.app.ui.fragments.PanelFragment"
-        android:label="@string/panel"
-        tools:layout="@layout/fragment_panel" />
+        android:id="@+id/panelFragment"
+        android:name="com.example.pasiekaapp.PanelFragment"
+        android:label="Home">
+    </fragment>
+
+
 
     <fragment
-        android:id="@+id/navigation_pasieki"
-        android:name="com.example.app.ui.fragments.PasiekiFragment"
-        android:label="@string/pasieki"
-        tools:layout="@layout/fragment_pasieki" />
+        android:id="@+id/tasksFragment"
+        android:name="com.example.pasiekaapp.TasksFragment"
+        android:label="Tasks">
+    </fragment>
 
-    <fragment
-        android:id="@+id/navigation_zadania"
-        android:name="com.example.app.ui.fragments.ZadaniaFragment"
-        android:label="@string/zadania"
-        tools:layout="@layout/fragment_zadania" />
 
-    <fragment
-        android:id="@+id/navigation_wiecej"
-        android:name="com.example.app.ui.fragments.WiecejFragment"
-        android:label="@string/wiecej"
-        tools:layout="@layout/fragment_wiecej" />
+
 </navigation>

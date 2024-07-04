@@ -28,6 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Dashobard activity" />
+    <Button
+        android:id="@+id/taskButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tasks Fragment" />
 
     <FrameLayout
         android:id="@+id/fragment_container"
