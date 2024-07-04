@@ -6,7 +6,6 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.pasiekaapp.ui.LoginFragment
-import com.example.pasiekaapp.ui.RegisterFragment
 import com.example.pasiekaapp.ui.SplashScreenFragment
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         val splashButton: Button = findViewById(R.id.splashButton)
         val dashboardButton: Button = findViewById(R.id.dashboardButton)
         val TasksButton: Button = findViewById(R.id.taskButton)
+        val OptionsButton: Button = findViewById(R.id.optionsButton)
         loginButton.setOnClickListener {
             openFragment(LoginFragment())
         }
@@ -33,6 +33,9 @@ class MainActivity : AppCompatActivity() {
         }
         TasksButton.setOnClickListener {
             openFragment(TasksFragment())
+        }
+        OptionsButton.setOnClickListener {
+            openFragment(OptionsFragment())
         }
         dashboardButton.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)
