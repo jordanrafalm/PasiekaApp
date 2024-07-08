@@ -19,7 +19,7 @@ class PasswordValidator {
         }
     }
 
-    private fun validatePassword(password: String, editText: EditText, context: Context) {
+    fun validatePassword(password: String, editText: EditText, context: Context) {
         if (!isValid(password)) {
             editText.error = context.getString(R.string.invalid_password)
         } else {
