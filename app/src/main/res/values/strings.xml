@@ -6,5 +6,10 @@
     <string name="pasieki">Pasieki</string>
     <string name="zadania">Zadania</string>
     <string name="wiecej">Więcej</string>
-
+    <string name="invalid_password">Nieprawidłowe hasło</string>
+    <string name="invalid_name_message">Niepoprawne imię</string>
+    <string name="invalid_surname_message">Niepoprawne nazwisko</string>
+    <string name="invalid_empty_message">To pole jest wymagane</string>
+    <string name="invalid_spaces_message">Zbyt wiele spacji</string>
+    <string name="invalid_email">Niepoprawny email</string>
 </resources>
