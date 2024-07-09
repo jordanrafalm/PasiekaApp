@@ -10,8 +10,6 @@
         android:label="Panel">
     </fragment>
 
-
-
     <fragment
         android:id="@+id/tasksFragment"
         android:name="com.example.pasiekaapp.TasksFragment"
@@ -21,9 +19,16 @@
     <fragment
         android:id="@+id/optionsFragment"
         android:name="com.example.pasiekaapp.OptionsFragment"
-        android:label="Options">
+        android:label="Options"
+        tools:layout="@layout/fragment_options" >
+        <action
+            android:id="@+id/action_optionsFragment_to_shopFragment"
+            app:destination="@id/shopFragment" />
     </fragment>
 
-
-
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.example.pasiekaapp.ShopFragment"
+        android:label="Shop"
+        tools:layout="@layout/fragment_shop" />
 </navigation>
