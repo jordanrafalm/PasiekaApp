@@ -46,6 +46,7 @@
         android:hint="Wpisz swoje imię"
         android:padding="15dp"
         android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
         android:textSize="16sp" />
 
     <EditText
@@ -62,6 +63,7 @@
         android:hint="Wpisz swój email"
         android:padding="15dp"
         android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
         android:textSize="16sp" />
 
     <EditText
@@ -78,6 +80,7 @@
         android:hint="Wpisz swoje hasło"
         android:padding="15dp"
         android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
         android:textSize="16sp" />
 
     <EditText
@@ -94,6 +97,7 @@
         android:hint="Powtórz hasło"
         android:padding="15dp"
         android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
         android:textSize="16sp" />
 
     <Button

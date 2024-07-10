@@ -3,23 +3,27 @@ package com.example.pasiekaapp
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.pasiekaapp.ui.LoginFragment
-import com.example.pasiekaapp.ui.SplashScreenFragment
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var buttonContainer: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mainactivity)
 
+        buttonContainer = findViewById(R.id.button_container)
+
         val loginButton: Button = findViewById(R.id.loginButton)
         val registerButton: Button = findViewById(R.id.registerButton)
         val splashButton: Button = findViewById(R.id.splashButton)
         val dashboardButton: Button = findViewById(R.id.dashboardButton)
-        val TasksButton: Button = findViewById(R.id.taskButton)
-        val OptionsButton: Button = findViewById(R.id.optionsButton)
+        val tasksButton: Button = findViewById(R.id.taskButton)
+        val optionsButton: Button = findViewById(R.id.optionsButton)
+
         loginButton.setOnClickListener {
             openFragment(LoginFragment())
         }
@@ -31,12 +35,15 @@ class MainActivity : AppCompatActivity() {
         splashButton.setOnClickListener {
             openFragment(SplashScreenFragment())
         }
-        TasksButton.setOnClickListener {
+
+        tasksButton.setOnClickListener {
             openFragment(TasksFragment())
         }
-        OptionsButton.setOnClickListener {
+
+        optionsButton.setOnClickListener {
             openFragment(OptionsFragment())
         }
+
         dashboardButton.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
@@ -44,9 +51,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openFragment(fragment: Fragment) {
+        buttonContainer.visibility = LinearLayout.GONE
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStack()
+            buttonContainer.visibility = LinearLayout.VISIBLE
+        } else {
+            super.onBackPressed()
+        }
     }
 }

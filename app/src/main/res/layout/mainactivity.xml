@@ -5,39 +5,45 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login Fragment" />
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login Fragment" />
 
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register Fragment" />
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register Fragment" />
 
-    <Button
-        android:id="@+id/splashButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Splash Screen Fragment" />
-    <Button
-        android:id="@+id/dashboardButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Dashobard activity" />
-    <Button
-        android:id="@+id/taskButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tasks Fragment" />
-    <Button
-        android:id="@+id/optionsButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Options Fragment" />
+        <Button
+            android:id="@+id/splashButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Splash Screen Fragment" />
+        <Button
+            android:id="@+id/dashboardButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dashboard Activity" />
+        <Button
+            android:id="@+id/taskButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tasks Fragment" />
+        <Button
+            android:id="@+id/optionsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Options Fragment" />
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fragment_container"
