@@ -2,10 +2,12 @@ package com.example.pasiekaapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.google.firebase.analytics.FirebaseAnalytics
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +16,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mainactivity)
+
+        val crashButton = Button(this)
+        crashButton.text = "Test Crash"
+        crashButton.setOnClickListener {
+            throw RuntimeException("Test Crash") // Force a crash
+        }
+
+        addContentView(crashButton, ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT))
 
         buttonContainer = findViewById(R.id.button_container)
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "37398079964",
+    "project_id": "pasiekaapp",
+    "storage_bucket": "pasiekaapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37398079964:android:1054f02bcb5dd86f700719",
+        "android_client_info": {
+          "package_name": "com.example.pasiekaapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9ftWXN7VdGd3bxfhFXV-N1mZNU4YlQXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
