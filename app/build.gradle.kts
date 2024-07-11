@@ -81,4 +81,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.0.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-crashlytics")
+    // Splash screen
+    implementation ("androidx.core:core-splashscreen:1.0.0")
+    // Koin
+    implementation("io.insert-koin:koin-android:3.3.2")
 }

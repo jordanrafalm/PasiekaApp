@@ -6,14 +6,25 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import com.google.firebase.analytics.FirebaseAnalytics
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var buttonContainer: LinearLayout
+    private val splashScreenViewModel: SplashScreenViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
+        val splashScreen = installSplashScreen()
+        splashScreen.setKeepOnScreenCondition {
+            splashScreenViewModel.delay.isActive
+        }
+
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mainactivity)
 

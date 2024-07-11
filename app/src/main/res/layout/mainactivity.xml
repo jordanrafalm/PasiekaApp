@@ -43,6 +43,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Options Fragment" />
+        <Button
+            android:id="@+id/startapp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="start App " />
     </LinearLayout>
 
     <FrameLayout

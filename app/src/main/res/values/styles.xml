@@ -11,4 +11,10 @@
         <item name="labelVisibilityMode">labeled</item>
     </style>
 
+    <style name="Theme.PasiekaApp.withSplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/pasiekaapp_logo_splashscreen</item>
+        <item name="postSplashScreenTheme">@style/Theme.PasiekaApp</item>
+    </style>
+
 </resources>
