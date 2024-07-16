@@ -8,11 +8,15 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
+import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var auth: FirebaseAuth
     private lateinit var buttonContainer: LinearLayout
     private val splashScreenViewModel: SplashScreenViewModel by viewModel()
 
@@ -23,7 +27,9 @@ class MainActivity : AppCompatActivity() {
             splashScreenViewModel.delay.isActive
         }
 
-
+        FirebaseApp.initializeApp(this)
+        auth = FirebaseAuth.getInstance()
+        auth.setLanguageCode("pl")
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mainactivity)
@@ -34,9 +40,9 @@ class MainActivity : AppCompatActivity() {
             throw RuntimeException("Test Crash") // Force a crash
         }
 
-        addContentView(crashButton, ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT))
+      //  addContentView(crashButton, ViewGroup.LayoutParams(
+        //    ViewGroup.LayoutParams.MATCH_PARENT,
+          //  ViewGroup.LayoutParams.WRAP_CONTENT))
 
         buttonContainer = findViewById(R.id.button_container)
 
@@ -88,5 +94,27 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+    private fun registerUser(email: String, password: String, fullName: String) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val firebaseUser = task.result?.user
+
+                    val profileUpdates = UserProfileChangeRequest.Builder()
+                        .setDisplayName(fullName)
+                        .build()
+
+                    firebaseUser?.updateProfile(profileUpdates)
+                        ?.addOnCompleteListener { updateTask ->
+                            if (updateTask.isSuccessful) {
+                                println("User profile updated: ${firebaseUser.displayName}")
+                            }
+                        }
+                } else {
+                    // If sign in fails, display a message to the user.
+                    println("User creation failed: ${task.exception?.message}")
+                }
+            }
     }
 }
