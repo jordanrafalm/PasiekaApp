@@ -1,18 +1,25 @@
 package com.example.pasiekaapp
 
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import android.view.ViewGroup
+import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.FirebaseApp
-import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.messaging.FirebaseMessaging
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import android.provider.Settings
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,27 +29,35 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.mainactivity)
+
+        setupFirebase()
+
         val splashScreen = installSplashScreen()
         splashScreen.setKeepOnScreenCondition {
             splashScreenViewModel.delay.isActive
         }
 
-        FirebaseApp.initializeApp(this)
-        auth = FirebaseAuth.getInstance()
-        auth.setLanguageCode("pl")
-
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.mainactivity)
-
-        val crashButton = Button(this)
-        crashButton.text = "Test Crash"
-        crashButton.setOnClickListener {
-            throw RuntimeException("Test Crash") // Force a crash
+        if (!areNotificationsEnabled()) {
+            showNotificationSettingsDialog()
         }
 
-      //  addContentView(crashButton, ViewGroup.LayoutParams(
-        //    ViewGroup.LayoutParams.MATCH_PARENT,
-          //  ViewGroup.LayoutParams.WRAP_CONTENT))
+
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("FCM", "Fetching FCM registration token failed", task.exception)
+                return@addOnCompleteListener
+            }
+            // Get new FCM registration token
+            val token = task.result
+            Log.d("FCM", "Token: $token")
+
+            // Save the token to Firestore
+            val myService = MyFirebaseMessagingService()
+            myService.saveTokenToFirestore(token)
+        }
 
         buttonContainer = findViewById(R.id.button_container)
 
@@ -53,26 +68,11 @@ class MainActivity : AppCompatActivity() {
         val tasksButton: Button = findViewById(R.id.taskButton)
         val optionsButton: Button = findViewById(R.id.optionsButton)
 
-        loginButton.setOnClickListener {
-            openFragment(LoginFragment())
-        }
-
-        registerButton.setOnClickListener {
-            openFragment(RegisterFragment())
-        }
-
-        splashButton.setOnClickListener {
-            openFragment(SplashScreenFragment())
-        }
-
-        tasksButton.setOnClickListener {
-            openFragment(TasksFragment())
-        }
-
-        optionsButton.setOnClickListener {
-            openFragment(OptionsFragment())
-        }
-
+        loginButton.setOnClickListener { openFragment(LoginFragment()) }
+        registerButton.setOnClickListener { openFragment(RegisterFragment()) }
+        splashButton.setOnClickListener { openFragment(SplashScreenFragment()) }
+        tasksButton.setOnClickListener { openFragment(TasksFragment()) }
+        optionsButton.setOnClickListener { openFragment(OptionsFragment()) }
         dashboardButton.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
@@ -95,6 +95,7 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
+
     private fun registerUser(email: String, password: String, fullName: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -112,9 +113,48 @@ class MainActivity : AppCompatActivity() {
                             }
                         }
                 } else {
-                    // If sign in fails, display a message to the user.
                     println("User creation failed: ${task.exception?.message}")
                 }
             }
+    }
+
+    private fun setupFirebase() {
+        FirebaseApp.initializeApp(this)
+        auth = FirebaseAuth.getInstance()
+    }
+
+    private fun areNotificationsEnabled(): Boolean {
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        return notificationManager.areNotificationsEnabled()
+    }
+
+    private fun showNotificationSettingsDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Włącz powiadomienia")
+            .setMessage("Aby korzystać z wszystkich funkcji aplikacji pszczelarskiej, włącz powiadomienia.")
+            .setPositiveButton("Ustawienia powiadomień") { _, _ ->
+                openNotificationSettings()
+            }
+            .show()
+    }
+
+    private fun openNotificationSettings() {
+        val intent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
+                putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+            }
+        } else {
+            Intent("android.settings.APP_NOTIFICATION_SETTINGS").apply {
+                putExtra("app_package", packageName)
+                putExtra("app_uid", applicationInfo.uid)
+            }
+        }
+        startActivity(intent)
+    }
+
+
+
+    companion object {
+        private const val TAG = "MainActivity"
     }
 }
