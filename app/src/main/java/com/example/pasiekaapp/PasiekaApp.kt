@@ -28,6 +28,7 @@ class PasiekaApp: Application() {
         single<SplashScreenUseCase> { SplashScreenUseCaseImpl() }
         single { FirebaseAuth.getInstance() }
         single { FirebaseFirestore.getInstance() }
+        single { LoginUseCase(get()) }
 
         //repo
         single<UserRepository> { UserRepositoryImpl(get()) }
@@ -37,5 +38,6 @@ class PasiekaApp: Application() {
         //viewModel
         viewModel { RegisterViewModel(get()) }
         viewModel{ SplashScreenViewModel(get()) }
+        viewModel { LoginViewModel(get()) }
     }
 }
