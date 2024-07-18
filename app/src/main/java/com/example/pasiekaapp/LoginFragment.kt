@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-
+import androidx.navigation.fragment.findNavController
 import com.example.pasiekaapp.databinding.FragmentLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,7 +27,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         EmailValidator.attach(binding.emailEditText)
         PasswordValidator.attach(binding.passwordEditText, requireContext())
 
@@ -37,12 +36,11 @@ class LoginFragment : Fragment() {
                     val intent = Intent(requireActivity(), DashboardActivity::class.java)
                     startActivity(intent)
                     requireActivity().finish()
+                    println("Login SUCCESS.")
                 }
-
                 LoginState.ERROR -> {
                     println("Login failed.")
                 }
-
                 LoginState.LOADING -> {
                     println("Login is in progress.")
                 }
@@ -52,29 +50,23 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigationListeners() {
-
-
         binding.loginButton.setOnClickListener {
             viewModel.login(
                 binding.emailEditText.text.toString(),
                 binding.passwordEditText.text.toString()
             )
         }
-
-     /*   binding.forgotPassword.setOnClickListener {
+        // Uncomment and modify the following if needed
+        /*
+        binding.forgotPassword.setOnClickListener {
             val action =
                 LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment(false)
             findNavController().navigate(action)
         }
-
-
-
-        binding.signUpNow.setOnClickListener {
-            val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
-            findNavController().navigate(action)
+   */
+        binding.registerTextView.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
-
-      */
     }
 }

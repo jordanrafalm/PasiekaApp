@@ -34,75 +34,69 @@
 
     <EditText
         android:id="@+id/nameEditText"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/instructionTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
         android:background="@drawable/rounded_edit_text"
         android:gravity="center"
         android:hint="Wpisz swoje imię"
         android:padding="15dp"
         android:textColor="@android:color/black"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColorHint="@android:color/black"
         android:textSize="16sp" />
 
     <EditText
         android:id="@+id/emailEditText"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/nameEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="30dp"
         android:background="@drawable/rounded_edit_text"
         android:gravity="center"
         android:hint="Wpisz swój email"
         android:padding="15dp"
         android:textColor="@android:color/black"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColorHint="@android:color/black"
         android:textSize="16sp" />
 
     <EditText
         android:id="@+id/passwordEditText"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/emailEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="30dp"
         android:background="@drawable/rounded_edit_text"
         android:gravity="center"
         android:hint="Wpisz swoje hasło"
+        android:inputType="textPassword"
         android:padding="15dp"
         android:textColor="@android:color/black"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColorHint="@android:color/black"
         android:textSize="16sp" />
 
     <EditText
         android:id="@+id/confirmPasswordEditText"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/passwordEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="30dp"
         android:background="@drawable/rounded_edit_text"
         android:gravity="center"
         android:hint="Powtórz hasło"
+        android:inputType="textPassword"
         android:padding="15dp"
         android:textColor="@android:color/black"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColorHint="@android:color/black"
         android:textSize="16sp" />
 
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="215dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/confirmPasswordEditText"
         android:layout_centerHorizontal="true"
@@ -110,7 +104,7 @@
         android:background="@drawable/rounded_button"
         android:text="Zarejestruj"
         android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/loginTextView"

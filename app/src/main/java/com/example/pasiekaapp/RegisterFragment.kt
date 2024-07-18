@@ -13,15 +13,16 @@ import androidx.navigation.fragment.findNavController
 import com.example.pasiekaapp.databinding.FragmentRegisterBinding
 import com.google.android.gms.safetynet.SafetyNet
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
     private val viewModel: RegisterViewModel by viewModel()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -38,20 +39,20 @@ class RegisterFragment : Fragment() {
                     }
 
                     result.isSuccess -> {
-
+                        // handle success
                     }
 
                     result.isFailure -> {
-
+                        // handle failure
                     }
                 }
             }
         }
+
         navigationListeners()
     }
 
     private fun setupInputValidation() {
-
         FullNameValidator.attach(binding.nameEditText, requireContext())
         EmailValidator.attach(binding.emailEditText)
         PasswordValidator.attach(binding.passwordEditText, requireContext())
@@ -80,9 +81,7 @@ class RegisterFragment : Fragment() {
             binding.passwordEditText.text.toString() == binding.confirmPasswordEditText.text.toString()
 
     private fun navigationListeners() {
-
         binding.registerButton.setOnClickListener {
-
             viewModel.signUp(
                 binding.nameEditText.text.toString(),
                 binding.emailEditText.text.toString(),
@@ -90,9 +89,8 @@ class RegisterFragment : Fragment() {
             )
         }
 
+        binding.loginTextView.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        }
     }
 }
-
-
-
-
