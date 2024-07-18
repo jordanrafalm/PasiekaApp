@@ -35,7 +35,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         saveTokenToFirestore(token)
     }
 
-    fun saveTokenToFirestore(token: String) {
+     fun saveTokenToFirestore(token: String) {
         val currentUser = FirebaseAuth.getInstance().currentUser
         currentUser?.let {
             val db = FirebaseFirestore.getInstance()
@@ -50,7 +50,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     private fun showNotification(title: String, message: String) {
-        val builder = NotificationCompat.Builder(this, "channel_id")
+        val builder = NotificationCompat.Builder(this, "all")
             .setSmallIcon(R.drawable.pasiekaapp_logo) // Ikona aplikacji
             .setContentTitle(title)
             .setContentText(message)
@@ -66,11 +66,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         // Dla Android Oreo (API 26) i wyższych, dodaj kanał powiadomień
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
-                "channel_id",
+                "all",
                 "General Notifications",
                 NotificationManager.IMPORTANCE_DEFAULT
             )
             notificationManager.createNotificationChannel(channel)
         }
         notificationManager.notify(0, builder.build())
-}}
+    }
+}
