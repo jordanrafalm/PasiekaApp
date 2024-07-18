@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tlo">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="251dp"
+        android:layout_height="196dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:src="@drawable/pasiekaapp_logo" />
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="PasiekaAPP"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_name"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Odkryj świat pszczelarstwa jak nigdy dotąd! Nasza aplikacja mobilna oferuje intuicyjne narzędzia i zasoby, które pomogą Ci pielęgnować i rozwijać Twoją pasję oraz hodowlę pszczół."
+        android:textColor="#333333"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:justificationMode="inter_word" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="39dp"
+        android:background="@drawable/rounded_button"
+        android:text="ROZPOCZNIJ"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
+
+</RelativeLayout>
