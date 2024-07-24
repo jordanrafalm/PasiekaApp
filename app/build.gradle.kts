@@ -92,4 +92,9 @@ dependencies {
     implementation ("androidx.core:core-splashscreen:1.0.0")
     // Koin
     implementation("io.insert-koin:koin-android:3.3.2")
+    // QR code
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+    // snackbar
+    implementation ("com.google.android.material:material:1.4.0")
+
 }
