@@ -95,8 +95,6 @@
                     android:src="@drawable/qr"
                     android:contentDescription="QR Code"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
                     android:scaleType="centerInside"
                     android:padding="2dp"/>
 
@@ -114,11 +112,15 @@
                 android:orientation="vertical"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                <ImageButton
+                    android:id="@+id/nfc_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/nfc"
-                    android:contentDescription="NFC"/>
+                    android:contentDescription="NFC"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:scaleType="centerInside"
+                    android:padding="2dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -126,6 +128,8 @@
                     android:text="NFC"
                     android:textColor="@color/black"
                     android:textSize="16sp"/>
+
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

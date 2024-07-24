@@ -25,6 +25,12 @@ class ShortcutsFragment : Fragment() {
             startActivity(intent)
         }
 
+        val nfcButton: ImageButton = view.findViewById(R.id.nfc_button)
+        nfcButton.setOnClickListener {
+            val intent = Intent(activity, NFCActivity::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 }
