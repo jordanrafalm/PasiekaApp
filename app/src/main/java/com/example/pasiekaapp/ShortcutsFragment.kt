@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.content.Intent
+import android.widget.Button
 import android.widget.ImageButton
 
 
@@ -28,6 +29,12 @@ class ShortcutsFragment : Fragment() {
         val nfcButton: ImageButton = view.findViewById(R.id.nfc_button)
         nfcButton.setOnClickListener {
             val intent = Intent(activity, NFCActivity::class.java)
+            startActivity(intent)
+        }
+
+        val addInspectionButton: Button = view.findViewById(R.id.add_inspection_button)
+        addInspectionButton.setOnClickListener {
+            val intent = Intent(activity, HiveInspectionActivity::class.java)
             startActivity(intent)
         }
 

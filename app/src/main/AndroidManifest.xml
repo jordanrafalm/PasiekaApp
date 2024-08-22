@@ -25,6 +25,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PasiekaApp.withSplash">
         <activity
+            android:name=".CheckInspectionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
             android:name=".HiveInspectionActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

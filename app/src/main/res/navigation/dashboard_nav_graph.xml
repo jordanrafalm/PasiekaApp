@@ -17,6 +17,13 @@
         tools:layout="@layout/fragment_tasks" />
 
     <fragment
+        android:id="@+id/PasiekiFragment"
+        android:name="com.example.pasiekaapp.PasiekiFragment"
+        android:label="Pasieki"
+        tools:layout="@layout/fragment_pasieki" />
+
+
+    <fragment
         android:id="@+id/optionsFragment"
         android:name="com.example.pasiekaapp.OptionsFragment"
         android:label="Options"

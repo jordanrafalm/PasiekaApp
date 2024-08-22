@@ -5,7 +5,7 @@
         android:icon="@drawable/panel"
         android:title="@string/panel" />
     <item
-        android:id="@+id/navigation_pasieki"
+        android:id="@+id/PasiekiFragment"
         android:icon="@drawable/bee_4459984"
         android:title="@string/pasieki" />
     <item
