@@ -81,6 +81,8 @@ dependencies {
     implementation(libs.firebase.database.ktx)
     implementation(libs.firebase.database)
     implementation(libs.firebase.firestore)
+    implementation(libs.androidx.media3.common)
+    implementation(libs.firebase.crashlytics.buildtools)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -103,5 +105,7 @@ dependencies {
     implementation ("com.android.volley:volley:1.2.1")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
+    //gson
+    implementation ("com.google.code.gson:gson:2.8.9")
 
 }

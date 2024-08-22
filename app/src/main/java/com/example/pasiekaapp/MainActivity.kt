@@ -1,5 +1,6 @@
 package com.example.pasiekaapp
 
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
+        createNotificationChannel()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -61,7 +63,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun areNotificationsEnabled(): Boolean {
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         return notificationManager.areNotificationsEnabled()
     }
 
@@ -88,6 +91,22 @@ class MainActivity : AppCompatActivity() {
         }
         startActivity(intent)
     }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                "tasks_channel",
+                "Przypomnienia o zadaniach",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "Kanał do przypomnień o zadaniach"
+            }
+
+            val manager = getSystemService(NotificationManager::class.java)
+            manager.createNotificationChannel(channel)
+        }
+    }
+
 
     companion object {
         private const val TAG = "MainActivity"

@@ -8,8 +8,10 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TasksAdapter(private val tasksList: MutableList<String>) :
-    RecyclerView.Adapter<TasksAdapter.TaskViewHolder>() {
+class TasksAdapter(
+    private val tasksList: MutableList<String>,
+    private val onTaskRemoved: () -> Unit  // Dodaj callback do obsługi zapisu
+) : RecyclerView.Adapter<TasksAdapter.TaskViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -27,6 +29,7 @@ class TasksAdapter(private val tasksList: MutableList<String>) :
             tasksList.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, tasksList.size)
+            onTaskRemoved()  // Wywołaj callback po usunięciu zadania
         }
     }
 
@@ -39,6 +42,4 @@ class TasksAdapter(private val tasksList: MutableList<String>) :
         val cbTaskCompleted: CheckBox = itemView.findViewById(R.id.cbTaskCompleted)
         val btnDeleteTask: ImageButton = itemView.findViewById(R.id.btnDeleteTask)
     }
-
-
 }
