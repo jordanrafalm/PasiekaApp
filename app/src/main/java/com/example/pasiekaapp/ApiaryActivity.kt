@@ -27,7 +27,6 @@ class ApiaryActivity : AppCompatActivity() {
         binding.btnAdd.setOnClickListener {
             saveData()
 
-            // Można zaimplementować dalszą nawigację lub działania po dodaniu danych
             Toast.makeText(this, "Pasieka dodana pomyślnie", Toast.LENGTH_SHORT).show()
         }
 
@@ -65,7 +64,7 @@ class ApiaryActivity : AppCompatActivity() {
             if (id != -1) {
                 findViewById<RadioButton>(id).text.toString().toInt()
             } else {
-                0 // Domyślna wartość, jeśli nic nie zostało wybrane
+                0
             }
         }
 
@@ -73,7 +72,7 @@ class ApiaryActivity : AppCompatActivity() {
             if (id != -1) {
                 findViewById<RadioButton>(id).text.toString().toInt()
             } else {
-                0 // Domyślna wartość, jeśli nic nie zostało wybrane
+                0
             }
         }
 
@@ -81,7 +80,7 @@ class ApiaryActivity : AppCompatActivity() {
             if (id != -1) {
                 findViewById<RadioButton>(id).text.toString().toInt()
             } else {
-                0 // Domyślna wartość, jeśli nic nie zostało wybrane
+                0
             }
         }
 

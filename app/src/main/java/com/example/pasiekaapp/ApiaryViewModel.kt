@@ -1,10 +1,8 @@
 package com.example.pasiekaapp
 
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.pasiekaapp.Apiary
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ApiaryViewModel : ViewModel() {
@@ -15,6 +13,9 @@ class ApiaryViewModel : ViewModel() {
     private val _apiaryLiveData = MutableLiveData<Apiary>()
     val apiaryLiveData: LiveData<Apiary> get() = _apiaryLiveData
 
+    // LiveData for counting the number of apiaries
+    private val _apiaryCountLiveData = MutableLiveData<Int>()
+    val apiaryCountLiveData: LiveData<Int> get() = _apiaryCountLiveData
 
 
     fun saveApiaryData(apiary: Apiary, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
@@ -35,7 +36,7 @@ class ApiaryViewModel : ViewModel() {
         }
     }
 
-    // Opcjonalnie metoda do pobierania danych jednej pasieki, jeśli potrzebne
+
     fun loadApiaryData(documentName: String) {
         val apiaryDocument = apiariesCollection.document(documentName)
         apiaryDocument.get().addOnSuccessListener { document ->
@@ -46,7 +47,16 @@ class ApiaryViewModel : ViewModel() {
                 }
             }
         }.addOnFailureListener {
-            // Możesz dodać obsługę błędów tutaj
+
+        }
+    }
+
+
+    fun loadApiaryCount() {
+        apiariesCollection.get().addOnSuccessListener { documents ->
+            _apiaryCountLiveData.value = documents.size()
+        }.addOnFailureListener { exception ->
+            _apiaryCountLiveData.value = 0
         }
     }
 }

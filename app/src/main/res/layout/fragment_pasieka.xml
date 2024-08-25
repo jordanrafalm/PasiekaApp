@@ -1,78 +1,92 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".MainActivity">
 
+
     <LinearLayout
         android:id="@+id/quick_actions_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner_background"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/quick_actions_title"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Pasieka 1"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/quick_actions_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Pasieka 1"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/stan_pasieki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Stan:\n• 10 uli\n• 6 rodzin silnych\n• 2 ule bez czerwiu"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/ostatnie_zadania"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Ostatnio wykonywane zadania:\n• miodobranie po rzepaku\n• kontrola czerwiu"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/stan_pasieki"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Stan:\n• 10 uli\n• 6 rodzin silnych\n• 2 ule bez czerwiu"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
+            <Button
+                android:id="@+id/add_inspection_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Dodaj przegląd " />
 
-        <TextView
-            android:id="@+id/ostatnie_zadania"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Ostatnio wykonywane zadania:\n• miodobranie po rzepaku\n• kontrola czerwiu"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            <Button
+                android:id="@+id/check_inspection_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Otwórz przegląd" />
 
+            <Button
+                android:id="@+id/add_hive_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Dodaj ul " />
 
-        <Button
-            android:id="@+id/add_inspection_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Dodaj przegląd " />
+            <Button
+                android:id="@+id/add_task_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Dodaj zadanie " />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/check_inspection_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Otwórz przegląd" />
-
-
-        <Button
-            android:id="@+id/add_hive_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Dodaj ul " />
-
-
-        <Button
-            android:id="@+id/add_task_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Dodaj zadanie " />
     </LinearLayout>
 
 </RelativeLayout>
