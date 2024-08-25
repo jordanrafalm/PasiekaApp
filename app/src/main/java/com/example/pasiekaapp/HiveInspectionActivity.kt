@@ -1,5 +1,6 @@
 package com.example.pasiekaapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.RadioButton
 import android.widget.Toast
@@ -16,7 +17,6 @@ class HiveInspectionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         binding = ActivityHiveinspectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -26,6 +26,13 @@ class HiveInspectionActivity : AppCompatActivity() {
 
         binding.btnNext.setOnClickListener {
             saveData()
+
+            val intent = Intent(this, FamilyInspectionActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnFinish.setOnClickListener {
+            finish()
         }
     }
 
@@ -55,11 +62,21 @@ class HiveInspectionActivity : AppCompatActivity() {
 
     private fun saveData() {
         val korpusyValue = binding.rgKorpusy.checkedRadioButtonId.let { id ->
-            findViewById<RadioButton>(id).text.toString().toInt()
+            if (id != -1) {
+                findViewById<RadioButton>(id).text.toString().toInt()
+            } else {
+                // Tutaj możesz ustawić domyślną wartość lub zasygnalizować, że nic nie zostało wybrane
+                0 // Przykładowa domyślna wartość
+            }
         }
 
         val nadstawkiValue = binding.rgNadstawki.checkedRadioButtonId.let { id ->
-            findViewById<RadioButton>(id).text.toString().toInt()
+            if (id != -1) {
+                findViewById<RadioButton>(id).text.toString().toInt()
+            } else {
+                // Tutaj możesz ustawić domyślną wartość lub zasygnalizować, że nic nie zostało wybrane
+                0 // Przykładowa domyślna wartość
+            }
         }
 
         val ul = Ul(
